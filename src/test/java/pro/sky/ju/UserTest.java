@@ -21,7 +21,7 @@ class UserTest {
 
     @BeforeAll
     static void addNewUserWithoutParameters() {
-        assertFalse(new User().equals(null));
+        user = new User();
         System.out.println("Создать через конструктор без параметров:" + user.getEmail() + " " + user.getLogin());
     }
 
@@ -33,14 +33,14 @@ class UserTest {
 
     @Test
     void shouldNameNotEqualsMail() {
-        Assertions.assertEquals(user.getLogin(), user.getEmail());
+        assertNotEquals(user.getEmail(), user.getLogin());
     }
     @Test
     public void shouldCheckUserForExceptions () throws RuntimeException {
-        RuntimeException e = assertThrows(RuntimeException.class, () ->{
+        RuntimeException e = assertThrows(RuntimeException.class, () -> {
             new User("bobrov", "bobrov");
             new User(" ", "bobrov");
-            new User("", "");
+            new User(" ", " ");
         });
         assertNotNull(e.getMessage());
     }

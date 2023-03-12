@@ -26,7 +26,7 @@ class UserTest {
     }
 
     @Test
-    void shouldCheckSymbols() {
+    void shouldCheckSymbols()  {
         Assertions.assertTrue(user.getEmail().contains(SYMBOL));
         Assertions.assertTrue(user.getEmail().contains(POINT));
     }
